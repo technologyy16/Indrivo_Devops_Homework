@@ -1,5 +1,16 @@
-name: .NET
-
+#---------------------------------------------------------------------
+# GitHub Action Workflow DevOps HomeWork 
+#
+# Version      Date        Info
+# 1.0          2022        Initial Version
+#
+# Made by Vladislav Vicol Copyleft (c) 2022
+#---------------------------------------------------------------------
+name: my-homework-indrivo
+env:
+  APPLICATION_NAME    : "MyApp"
+  DEPLOY_PACKAGE_NAME : "app-ver-${{ github.sha }}"
+  
 on:
   push:
     branches: [ main ]
@@ -9,11 +20,14 @@ on:
 jobs:
   build:
 
-    runs-on: 
+    runs-on: [windows-latest]
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Setup .NET
+    - name: Git clone my repo
+    - uses: actions/checkout@v1
+      run : ls
+      
+    - name: Setup .ET
       uses: actions/setup-dotnet@v2
       with:
         dotnet-version: 5.0.x
